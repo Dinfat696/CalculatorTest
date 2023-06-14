@@ -5,52 +5,27 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalcTestService {
 
-    public Double plus(Double num1, Double num2) {
-        try {
-            checkArgument(num1, num2);
-
-        } catch (NullException e) {
-            System.out.println("Введите число");
-        }
+    public int plus(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null) throw new IllegalArgumentException();
         return num1 + num2;
     }
 
 
-    public Double minus(Double num1, Double num2) {
-        try {
-            checkArgument(num1, num2);
-
-        } catch (NullException e) {
-            System.out.println("Введите число");
-        }
+    public int minus(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null) throw new IllegalArgumentException();
         return num1 - num2;
     }
 
 
-    public Double multiply(Double num1, Double num2) {
-        try {
-            checkArgument(num1, num2);
-
-        } catch (NullException e) {
-            System.out.println("Введите число");
-        }
+    public int multiply(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null) throw new IllegalArgumentException();
         return num1 * num2;
     }
 
-    public Double divide(Double num1, Double num2) {
-        try {
-            checkArgument(num1, num2);
-
-        } catch (NullException e) {
-            System.out.println("Введите число");
-        }
-        return num1 / num2;
+    public double divide(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null||num2==0) throw new IllegalArgumentException();
+        return(double) num1 / num2;
     }
 
-    private void checkArgument(Double num1, Double num2) throws NullException {
-        if (num1 == null || num2 == null) {
-            throw new NullException("Введите число");
-        }
-    }
 
 }

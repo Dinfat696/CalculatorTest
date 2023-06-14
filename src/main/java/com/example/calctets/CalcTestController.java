@@ -21,25 +21,42 @@ public class CalcTestController {
     }
 
     @GetMapping("/plus")
-    public String plus(@RequestParam Double num1, @RequestParam Double num2) {
-        return num1 + "+" + num2 + "=" + (num1 + num2);
+    public String plus(@RequestParam Integer num1, @RequestParam Integer num2) {
+        try { return num1 + "+" + num2 + "=" + calculator.plus(num1,num2);
+
+        }catch (IllegalArgumentException e){
+            return "Ошибка в запросе";
+        }
+
     }
 
     @GetMapping("/minus")
-    public String minus(@RequestParam Double num1, @RequestParam Double num2) {
-        return num1 + "-" + num2 + "=" + (num1 - num2);
+    public String minus(@RequestParam Integer num1, @RequestParam Integer num2) {
+        try {
+            return num1 + "-" + num2 + "=" + calculator.minus(num1, num2);
+
+        } catch (IllegalArgumentException e) {
+            return "Ошибка в запросе";
+        }
     }
 
     @GetMapping("/multiply")
-    public String multiply(@RequestParam Double num1, @RequestParam Double num2) {
-        return num1 + "*" + num2 + "=" + (num1 * num2);
+    public String multiply(@RequestParam Integer num1, @RequestParam Integer num2) {
+        try {
+            return num1 + "*" + num2 + "=" + calculator.multiply(num1, num2);
+
+        } catch (IllegalArgumentException e) {
+            return "Ошибка в запросе";
+        }
     }
 
     @GetMapping("/divide")
-    public String divide(@RequestParam Double num1, @RequestParam Double num2) throws ArithmeticZeroException {
-        if (num2 == 0) {
-            throw new ArithmeticZeroException("На ноль делить нельзя");
+    public String divide(@RequestParam Integer num1, @RequestParam Integer num2) {
+        try {
+            return num1 + "/" + num2 + "=" + calculator.divide(num1, num2);
+
+        } catch (IllegalArgumentException e) {
+            return "Ошибка в запросе";
         }
-        return num1 + "/" + num2 + "=" + (num1 / num2);
     }
 }
